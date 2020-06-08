@@ -32,14 +32,14 @@ class RBFSampler(TransformerMixin, BaseEstimator):
 
     Parameters
     ----------
-    gamma : float
+    gamma : float, default=1.0
         Parameter of RBF kernel: exp(-gamma * x^2)
 
-    n_components : int
+    n_components : int, default=100
         Number of Monte Carlo samples per original feature.
         Equals the dimensionality of the computed feature space.
 
-    random_state : int, RandomState instance or None, optional (default=None)
+    random_state : int, RandomState instance or None, default=None
         Pseudo-random number generator to control the generation of the random
         weights and random offset when fitting the training data.
         Pass an int for reproducible output across multiple function calls.
@@ -146,14 +146,14 @@ class SkewedChi2Sampler(TransformerMixin, BaseEstimator):
 
     Parameters
     ----------
-    skewedness : float
+    skewedness : float, default=1.0
         "skewedness" parameter of the kernel. Needs to be cross-validated.
 
-    n_components : int
+    n_components : int, default=100
         number of Monte Carlo samples per original feature.
         Equals the dimensionality of the computed feature space.
 
-    random_state : int, RandomState instance or None, optional (default=None)
+    random_state : int, RandomState instance or None, default=None
         Pseudo-random number generator to control the generation of the random
         weights and random offset when fitting the training data.
         Pass an int for reproducible output across multiple function calls.
@@ -271,9 +271,9 @@ class AdditiveChi2Sampler(TransformerMixin, BaseEstimator):
 
     Parameters
     ----------
-    sample_steps : int, optional
+    sample_steps : int, default=2
         Gives the number of (complex) sampling points.
-    sample_interval : float, optional
+    sample_interval : float, default=None
         Sampling interval. Must be specified when sample_steps not in {1,2,3}.
 
     Attributes
@@ -455,7 +455,7 @@ class Nystroem(TransformerMixin, BaseEstimator):
 
     Parameters
     ----------
-    kernel : string or callable, default="rbf"
+    kernel : string or callable, default='rbf'
         Kernel map to be approximated. A callable should accept two arguments
         and the keyword arguments passed to this object as kernel_params, and
         should return a floating point number.
@@ -473,15 +473,15 @@ class Nystroem(TransformerMixin, BaseEstimator):
     degree : float, default=None
         Degree of the polynomial kernel. Ignored by other kernels.
 
-    kernel_params : mapping of string to any, optional
+    kernel_params : mapping of string to any, default=None
         Additional parameters (keyword arguments) for kernel function passed
         as callable object.
 
-    n_components : int
+    n_components : int, default=100
         Number of features to construct.
         How many data points will be used to construct the mapping.
 
-    random_state : int, RandomState instance or None, optional (default=None)
+    random_state : int, RandomState instance or None, default=None
         Pseudo-random number generator to control the uniform sampling without
         replacement of n_components of the training data to construct the basis
         kernel.
